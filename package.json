@@ -1,0 +1,26 @@
+{
+  "name": "roman-numerals",
+  "version": "1.0.0",
+  "description": "Roman Numerals Calculator",
+  "main": "app.js",
+  "scripts": {
+    "test": "jest",
+    "app": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DumAdrian/roman-numerals.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DumAdrian/roman-numerals/issues"
+  },
+  "homepage": "https://github.com/DumAdrian/roman-numerals#readme",
+  "dependencies": {
+    "express": "^4.18.1",
+    "jest": "^28.1.1",
+    "supertest": "^6.2.3",
+    "winston": "^3.7.2"
+  }
+}
