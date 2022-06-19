@@ -79,7 +79,7 @@ describe('roman-numeral algorithm tests', () => {
         it('returns roman representation for input ' + run.in, async () => {
             const res = await request(app).get(`/romannumeral?query=${run.in}`);
 
-            expect(res.text).toEqual(run.out);
+            expect(JSON.parse(res.text).result).toEqual(run.out);
         });
     });
 

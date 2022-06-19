@@ -1,10 +1,16 @@
 ## Roman Numerals
 
+https://en.wikipedia.org/wiki/Roman_numerals
+
 ### Setup
+```sh
 npm install
+```
 
 ### Run the app
+```sh
 npm run app
+```
 
 ### Solution
 The engineering process was in steps. First, the focus was on mapping known numbers to letters. Then I noticed there are special cases
@@ -32,3 +38,46 @@ npm run test
 There are 2 testing categories:
 - flow test-cases which check if the request has the right format
 - algorithm correctness test-cases where the flow should reach the algorithm which makes the conversion from integer to roman numerals
+
+### Metrics/Monitoring requirements
+
+- Docker
+
+## Prometheus
+
+Modify: `/prometheus-data/prometheus.yml`, replace `192.168.1.128` with your own host machine's IP.
+
+```sh
+docker run -p 9090:9090 -v ${pwd}/prometheus-data:/prometheus-data prom/prometheus --config.file=/prometheus-data/prometheus.yml
+```
+
+Open Prometheus: [http://localhost:9090](http://localhost:9090/graph)
+
+```
+sum(rate(http_request_duration_ms_count[1m])) by (service, route, method, code)  * 60
+```
+
+## Grafana
+
+```sh
+ docker run -i -p 3000:3000 grafana/grafana
+ ```
+
+ [Open Grafana: http://localhost:3000](http://localhost:3000)
+
+```
+Username: admin
+Password: admin
+```
+
+### Setting datasource
+
+Create a Grafana datasource with this settings:
++ name: DS_PROMETHEUS
++ type: prometheus
++ url: http://localhost:9090
++ access: direct (Browser)
+
+### Setting dashboard
+
+Grafana Dashboard to import: [/grafana-dashboard.json](/grafana-dashboard.json)
